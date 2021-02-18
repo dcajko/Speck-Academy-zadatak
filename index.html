@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .button {
+            background-color: #3077d3; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .button1 {
+            background-color: #3077d3;
+            color: black;
+        }
+
+        .button1:hover {
+            background-color: #3077d3;
+            color: white;
+        }
+        .button2 {
+            background-color: #cf3c3c;
+            color: black;
+        }
+
+        .button2:hover {
+            background-color: #ff0000;
+            color: white;
+        }
+        .product {
+            background-color: #a1a1a1; /* Green */
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        div, .center, h1{
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+    </style>
+<body id="bdy">
+<div class="center">
+<h1>Products app</h1>
+<div>
+    <label for="pname">Product name:</label>
+    <input type="text" id="pname" name="pname">
+    <input type="submit" value="Submit" onclick="addProduct()" class="button button1">
+</div>
+<div>
+    <label for="numberProduct">Number of products:</label>
+    <label name="numberProduct" id="numberProduct"> 0 </label>
+    <input type="submit" value="Remove all products!" onclick="removeAllProducts()" class="button button2">
+</div>
+
+<div id="productCounter"></div>
+<div id="ProductList">
+
+</div>
+</div>
+</body>
+</html>
+
+<script>
+    var numProducts = 0;
+    function addProduct(){
+        var newProduct = document.getElementById("pname").value;
+        if(newProduct == "") return;
+        printProducts(newProduct);
+        numProducts++;
+        document.getElementById("numberProduct").innerHTML = numProducts;
+    }
+
+    function printProducts(item){
+        const div = document.createElement('div');
+        div.className = 'row';
+        div.innerHTML = '<input type=\"submit\" class=\"product\" value="' + item + '"></input>';
+        document.getElementById("ProductList").appendChild(div);
+    }
+
+    function removeAllProducts(){
+        if(!confirm("Remove all products?")){
+            return;
+        }
+        document.getElementById("ProductList").innerHTML = '';
+        numProducts = 0;
+        document.getElementById("numberProduct").innerHTML = numProducts;
+    }
+
+</script>
