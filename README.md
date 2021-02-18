@@ -1,0 +1,2 @@
+# Speck Academy zadatak
+ 
